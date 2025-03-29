@@ -19,7 +19,17 @@
 <body>
   <div class="container">
     <header>
-      <img src="images/logo.png" alt="FTP" class="logo">
+      <div class="mobile-menu-toggle">
+        <span class="hamburger"></span>
+        <span class="menu-text">Menu</span>
+      </div>
+      
+      <div class="site-logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="FTP" class="logo">
+        </a>
+      </div>
+
       <nav class="nav">
         <a href="index.html" class="active">HOME</a>
         <a href="https://chromewebstore.google.com/detail/ftp-autocart/bgjmfmgpnnhpdimibnaijhehhnpgmicm?authuser=0&hl=en&pli=1">PURCHASE</a>
@@ -27,6 +37,13 @@
         <a href="#">DISCORD</a>
       </nav>
     </header>
+    
+    <div class="mobile-nav">
+      <a href="index.html" class="active">HOME</a>
+      <a href="https://chromewebstore.google.com/detail/ftp-autocart/bgjmfmgpnnhpdimibnaijhehhnpgmicm?authuser=0&hl=en&pli=1">PURCHASE</a>
+      <a href="mailto:christian.herrera97@rutgers.edu">SUPPORT</a>
+      <a href="#">DISCORD</a>
+    </div>
     
     <main>
       <div class="video-container">
@@ -59,5 +76,19 @@
       <p class="disclaimer">FTP AutoCart Extension is not affiliated with, endorsed by, or sponsored by FUCKTHEPOPULATION.</p>
     </footer>
   </div>
+
+  <!-- Javascript for Mobile Menu-->
+  <script>
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.mobile-nav').classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+    });
+    document.querySelectorAll('.mobile-nav a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.querySelector('.mobile-nav').classList.remove('open');
+        document.body.classList.remove('menu-open');
+      });
+    });
+  </script>
 </body>
 </html> 
