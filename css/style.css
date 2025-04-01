@@ -16,7 +16,7 @@ body.menu-open {
 }
 
 main {
-  max-height: 80vh;
+  max-height: 75vh;
 }
 
 .container {
@@ -27,14 +27,17 @@ main {
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
 .policy-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.policy-container::-webkit-scrollbar {
+  display: none;
 }
 
 header {
@@ -50,6 +53,13 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.site-logo-mobile {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 .logo {
@@ -222,21 +232,21 @@ p {
 }
 
 .store-logo-container {
-  height: 60px;
+  height: clamp(40px, 8vh, 60px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .store-logo {
-  width: 48px;
-  height: 48px;
+  width: clamp(32px, 6vh, 48px);
+  height: clamp(32px, 6vh, 48px);
   transition: transform 0.3s ease;
 }
 
 .store-logo[alt="Join our Discord"] {
-  width: 52px;
-  height: 52px;
+  width: clamp(36px, 6.5vh, 52px);
+  height: clamp(36px, 6.5vh, 52px);
 }
 
 .cta a:hover {
@@ -244,14 +254,16 @@ p {
 }
 
 footer {
-  border-top: 1px solid #eee;
   padding: 20px 0;
   text-align: center;
+  width: 100%;
+  margin-top: auto;
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 15px;
   margin-bottom: 20px;
 }
@@ -261,29 +273,42 @@ footer {
   color: #000;
   text-transform: uppercase;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .disclaimer {
   font-size: 12px;
   color: #666;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   body {
-    padding-top: 60px;
+    padding-top: 40px;
+  }
+
+  .policy-container {
+    padding: 20px;
   }
 
   .container {
     max-height: 100vh;
     overflow: hidden;
+    padding: 0;
+    gap: 5px;
+  }
+
+  main {
+    max-height: 85vh;
   }
 
   .site-logo {
     display: none;
   }
-  
-  .container {
-    padding: 0;
+
+  .site-logo-mobile {
+    display: flex;
   }
   
   header {
@@ -295,13 +320,11 @@ footer {
     background-color: #222;
     color: #fff;
     justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 2px 0;
+    height: 40px;
   }
-  
-  main {
-    margin-top: 20px;
-    padding: 0 15px;
-  }
-  
+    
   header .site-logo {
     order: 2;
     flex: 1;
@@ -346,15 +369,71 @@ footer {
     text-decoration: none;
   }
   
+  .video-container {
+    margin-bottom: 5px;
+  }
+  
   .video-container iframe {
     width: 350px;
-    height: 350px;
+    height: clamp(250px, 45vh, 300px);
+  }
+  
+  footer {
+    padding: 8px;
+    width: 100%;
+    margin-top: 5px;
+  }
+  
+  .footer-links {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    font-size: 12px;
+  }
+  
+  .disclaimer {
+    font-size: 10px;
+    max-width: 100%;
+  }
+
+  .cta {
+    gap: clamp(20px, 4vw, 40px);
+    margin: clamp(5px, 2vh, 15px) 0;
+  }
+
+  .cta a {
+    gap: clamp(5px, 1.5vh, 10px);
   }
 }
 
 @media (max-width: 480px) {
   .video-container iframe {
-    width: 280px;
-    height: 280px;
+    width: clamp(250px, 90vw, 280px);
+    height: clamp(200px, 40vh, 250px);
+  }
+  
+  footer {
+    padding: 8px;
+  }
+  
+  .footer-links {
+    gap: 6px;
+    justify-content: space-around;
+  }
+
+  .store-logo-container {
+    height: clamp(35px, 7vh, 45px);
+  }
+
+  .store-logo {
+    width: clamp(28px, 5vh, 36px);
+    height: clamp(28px, 5vh, 36px);
+  }
+
+  .store-logo[alt="Join our Discord"] {
+    width: clamp(32px, 5.5vh, 40px);
+    height: clamp(32px, 5.5vh, 40px);
   }
 } 
